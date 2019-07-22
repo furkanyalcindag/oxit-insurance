@@ -1,5 +1,6 @@
 from django.db import models
 
+from insurance.models import Acente
 from insurance.models.Musteri import Musteri
 
 
@@ -12,6 +13,7 @@ class KaskoSigortasi(models.Model):
         (NO, 'Hayır'),
     )
     sigortali = models.ForeignKey(Musteri, on_delete=models.CASCADE, null=True)
+    acente = models.ForeignKey(Acente, on_delete=models.CASCADE, null=True)
     arac_plaka = models.CharField(max_length=50, blank=True, null=True, verbose_name='Araç Plakası')
     belge_seri_no = models.CharField(max_length=120, verbose_name='Belge Seri No')
     kullanim_tarzi = models.CharField(max_length=128, verbose_name='Kullanım Tarzı')
