@@ -1,0 +1,29 @@
+[
+  {
+    "model": "insurance.Ayar",
+    "pk": 1,
+    "fields": {
+      "name": "kasko_prim",
+      "value": "5",
+      "title": "Kasko Sigortası Prim Yüzdesi"
+    }
+  },
+  {
+    "model": "insurance.Ayar",
+    "pk": 2,
+    "fields": {
+      "name": "trafik_prim",
+      "value": "6",
+      "title": "Trafik Sigortası Prim Yüzdesi"
+    }
+  },
+  {
+    "model": "insurance.Ayar",
+    "pk": 3,
+    "fields": {
+      "name": "dask_prim",
+      "value": "2",
+      "title": "DASK Prim Yüzdesi"
+    }
+  }
+]

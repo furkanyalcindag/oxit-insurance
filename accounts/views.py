@@ -22,7 +22,7 @@ def index(request):
 def login(request):
 
     if request.user.is_authenticated is True:
-        return redirect('education:list')
+        return redirect('insurance:acente-ekle')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -33,7 +33,7 @@ def login(request):
             # correct username and password login the user
             auth.login(request, user)
             #return render(request, 'patient/:patient/index', context={})
-            return redirect('education:list')
+            return redirect('insurance:acente-ekle')
 
         else:
             messages.add_message(request, messages.SUCCESS, 'todo')

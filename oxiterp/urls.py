@@ -33,7 +33,7 @@ urlpatterns = [
     #path('', include('accounts.urls')),
     #path('accounts/', include('django.contrib.auth.urls'))
     path('accounts/', include('accounts.urls')),
-    path('egitim/', include('education.urls')),
+    path('sigorta/', include('insurance.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

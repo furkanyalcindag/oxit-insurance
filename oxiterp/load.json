@@ -1,0 +1,29 @@
+[
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 1,
+    "fields": {
+      "tip": "Kasko",
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
+    }
+  },
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 2,
+    "fields": {
+      "tip": "Trafik",
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
+    }
+  },
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 3,
+    "fields": {
+      "tip": "Deprem",
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
+    }
+  }
+]

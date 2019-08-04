@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends 'base_layout.html' %}
+
+
+{% block content %}
+
+    <section>
+         {% if messages %}
+            {% for message in messages %}
+
+
+                {% if message.tags == 'warning' %}
+
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-ban"></i> Hata!</h4>
+
+
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+
+
+                    </div>
+
+                {% endif %}
+
+
+                {% if message.tags == 'success' %}
+
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-ban"></i> Başarılı!</h4>
+
+
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+
+
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+
+
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data" class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Sigorta Şirketi Ekle</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+
+
+                {% csrf_token %}
+                <div class="box-body">
+                    <!-- -->
+                    <div class="row" style="margin: 0px">
+
+
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i
+                                        class="fas fa-user-graduate"></i>Şirket Bilgileri</a></li>
+
+
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <!-- -->
+                                    <div class="row">
+
+
+                                        <div class="col-md-6">
+
+
+                                            <div class="form-group">
+                                                <label> {{ form.sirket_adi.label }}</label>
+                                                {{ form.sirket_adi }}
+                                            </div>
+                                            <!-- /.form-group -->
+
+                                             <label class="containerCheck">{{ form.aktif }}
+                                                {{ form.aktif.label }}
+                                                <span class="checkmark"></span>
+                                            </label>
+
+
+
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+
+<br>
+
+
+
+
+
+                                            <!-- -->
+
+
+                                            <!-- /.form-group -->
+                                        </div>
+
+
+                                        <!-- /.row -->
+                                    </div>
+
+
+                                    <!-- -->
+
+
+                                </div>
+                                <!-- /.tab-pane -->
+
+
+                                <!-- veli formu ekranı -->
+
+                                <!-- /.tab-pane -->
+
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+
+
+                    </div>
+
+                    <!-- -->
+
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" value="Submit" class="btn btn-primary pull-right">Kaydet</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </section>
+
+
+{% endblock %}

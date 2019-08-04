@@ -48,7 +48,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'accounts',
-    'education',
+    'insurance'
+
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 ROOT_URLCONF = 'oxiterp.urls'
 
@@ -75,7 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'education.services.general_methods.getMenu'
+                #'education.services.general_methods.getMenu'
 
 
                 #"education.services.general_methods.append_privileges",
@@ -156,7 +162,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join('oxiterp/static'),)
 
 
-LOGIN_REDIRECT_URL = '/patient'
+LOGIN_REDIRECT_URL = '/sigorta'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
