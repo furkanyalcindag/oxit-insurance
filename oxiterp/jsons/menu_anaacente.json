@@ -1,0 +1,167 @@
+[
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 1,
+    "fields": {
+      "name": "Anasayfa",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-home",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 2,
+    "fields": {
+      "name": "İstatistik",
+      "url": "insurance:acente-istatistik",
+      "is_parent": false,
+      "fa_icon": "fa-bar-chart",
+      "parent": 1
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 3,
+    "fields": {
+      "name": "Acente",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-briefcase",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 4,
+    "fields": {
+      "name": "Acente Ekle",
+      "url": "insurance:acente-ekle",
+      "is_parent": false,
+      "fa_icon": "fa-plus",
+      "parent": 3
+    }
+  },
+  {
+    "model": "insurance.menuAnaAcente",
+    "pk": 5,
+    "fields": {
+      "name": "Acente Listesi",
+      "url": "insurance:acente-listesi",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 3
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 6,
+    "fields": {
+      "name": "Trafik Sigortası",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-car",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 7,
+    "fields": {
+      "name": "Bekleyen Talepler,",
+      "url": "insurance:bekleyen-trafik-istek",
+      "is_parent": false,
+      "fa_icon": "fa-share",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 8,
+    "fields": {
+      "name": "Cevaplanan ",
+      "url": "insurance:cevaplanan-trafik-istek",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 9,
+    "fields": {
+      "name": "Poliçeler",
+      "url": "insurance:acente-poliçeleri",
+      "is_parent": false,
+      "fa_icon": "fa-file-pdf-o",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 9,
+    "fields": {
+      "name": "Müşterilerim",
+      "url": "insurance:acente-musterileri",
+      "is_parent": false,
+      "fa_icon": "fa-user",
+      "parent": 3
+    }
+
+
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 10,
+    "fields": {
+      "name": "Ayarlar",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-edit",
+      "parent": null
+    }
+
+
+  },
+
+   {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 11,
+    "fields": {
+      "name": "Sigorta Şirketi Ekle",
+      "url": "insurance:sirket-ekle",
+      "is_parent": false,
+      "fa_icon": "fa-briefcase",
+      "parent": 10
+    }
+
+
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 12,
+    "fields": {
+      "name": "Sigorta Şirketleri",
+      "url": "insurance:sirket-listesi",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 10
+    }
+
+
+  },
+   {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 13,
+    "fields": {
+      "name": "Prim Ayarları",
+      "url": "insurance:ayar-listesi",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 10
+    }
+
+
+  }
+]

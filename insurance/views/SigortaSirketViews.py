@@ -34,7 +34,7 @@ def sirke_guncelle(request, pk):
             return redirect('insurance:sirket-listesi')
 
         else:
-            messages.success(request, 'Formu kontrol ediniz')
+            messages.warning(request, 'Formu kontrol ediniz')
 
     return render(request, 'SigortaSirketi/sigorta-sirketi-ekle.html', {'form': form})
 

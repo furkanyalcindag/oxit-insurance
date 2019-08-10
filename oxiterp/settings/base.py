@@ -81,7 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                #'education.services.general_methods.getMenu'
+                'insurance.services.general_methods.getMenu'
 
 
                 #"education.services.general_methods.append_privileges",
@@ -142,7 +142,7 @@ TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

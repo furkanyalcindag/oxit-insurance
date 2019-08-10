@@ -18,24 +18,24 @@ class MusteriForm(ModelForm):
                 attrs={'class': 'form-control ', 'placeholder': 'Soyadı', 'value': '', 'required': 'required'}),
 
             'telefon': forms.TextInput(
-                attrs={'class': 'form-control ', 'placeholder': 'Telefon', 'value': '', 'required': 'required'}),
+                attrs={'class': 'form-control ', 'placeholder': 'Telefon', 'value': '' }),
 
             'cinsiyet': forms.Select(attrs={'class': 'form-control select2 select2-hidden-accessible',
                                             'style': 'width: 100%;'}),
 
-            'adres': forms.Textarea(attrs={'class': 'form-control ', 'placeholder': 'Adres', 'required': 'required'}),
+            'adres': forms.Textarea(attrs={'class': 'form-control ', 'placeholder': 'Adres'}),
 
             'meslek': forms.TextInput(
-                attrs={'class': 'form-control ', 'placeholder': 'Adres', 'value': '', 'required': 'required'}),
+                attrs={'class': 'form-control ', 'placeholder': 'Adres', 'value': ''}),
 
             'tc': forms.TextInput(
                 attrs={'class': 'form-control ', 'placeholder': 'T.C. No', 'value': '', 'required': 'required'}),
 
             'vergi_no': forms.TextInput(
-                attrs={'class': 'form-control ', 'placeholder': 'Vergi No:', 'value': '', 'required': 'required'}),
+                attrs={'class': 'form-control ', 'placeholder': 'Vergi No:', 'value': ''}),
 
             'dogum_tarihi': forms.DateInput(
-                attrs={'class': 'form-control  pull-right', 'id': 'datepicker', 'autocomplete': 'off',
+                attrs={'class': 'form-control  pull-right', 'id': 'datepicker','placeholder': 'Doğum Tarihi' ,'autocomplete': 'off',
                        'onkeydown': 'return false'}),
 
         }

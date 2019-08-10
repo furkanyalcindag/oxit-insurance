@@ -1,0 +1,322 @@
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+
+    <section>
+        {% if messages %}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Hata!</h4>
+
+
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data" class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Trafik Sigortası Teklif Talebi</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+
+
+                {% csrf_token %}
+                <div class="box-body">
+                    <!-- -->
+                    <div class="row" style="margin: 0px">
+
+
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i
+                                        class="fas fa-user-graduate"></i>Müşteri Bilgileri</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i
+                                        class="fas fa-user-friends"></i>Araç Bilgileri</a></li>
+
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <!-- -->
+                                    <div class="row">
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label> Adı</label>
+                                                {{ musteri_form.adi }}
+
+                                            </div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group">
+                                                <label> Soyadı </label>
+                                                {{ musteri_form.soyadi }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>T.C.</label>
+
+                                                {{ musteri_form.tc }}
+                                                <!-- /.input group -->
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Vergi No</label>
+
+                                                {{ musteri_form.vergi_no }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Doğum Tarihi</label>
+                                                <div class="input-group">
+
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    {{ musteri_form.dogum_tarihi }}
+                                                    <!-- /.input group -->
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Telefon Numarası</label>
+
+                                                {{ musteri_form.telefon }}
+                                                <!-- /.input group -->
+                                            </div>
+
+
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+
+
+                                            <div class="form-group">
+                                                <label>Cinsiyet</label>
+
+                                                {{ musteri_form.cinsiyet }}
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Meslek</label>
+
+                                                {{ musteri_form.meslek }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Adres</label>
+
+                                                {{ musteri_form.adres }}
+                                                <!-- /.input group -->
+                                            </div>
+
+
+                                            <!-- -->
+
+
+                                            <!-- /.form-group -->
+                                        </div>
+
+
+                                        <!-- /.row -->
+                                    </div>
+
+
+                                    <!-- -->
+
+
+                                </div>
+                                <!-- /.tab-pane -->
+
+
+                                <!-- veli formu ekranı -->
+                                <div class="tab-pane" id="tab_2">
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+                                                <label> Plaka</label>
+                                                {{ trafik_form.arac_plaka }}
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Belge Seri No</label>
+
+                                                {{ trafik_form.belge_seri_no }}
+                                                <!-- /.input group -->
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Araç Marka</label>
+
+                                                {{ trafik_form.arac_marka }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Araç Tipi</label>
+
+                                                {{ trafik_form.arac_tipi }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Araç Model Yılı</label>
+
+                                                {{ trafik_form.model_yili }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-4" style="border-left: 1px solid black;">
+
+                                            <div class="form-group">
+                                                <label>Şasi No</label>
+
+                                                {{ trafik_form.sasi_numarasi }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>IMM No</label>
+
+                                                {{ trafik_form.imm }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Motor Numarası</label>
+
+                                                {{ trafik_form.motor_numarasi }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Belge Seri No</label>
+
+                                                {{ trafik_form.belge_seri_no }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Kullanım Tarzı</label>
+
+                                                {{ trafik_form.kullanim_tarzi }}
+                                                <!-- /.input group -->
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4" style="border-left: 1px solid black;">
+
+
+                                            <div class="form-group">
+                                                <label>Araç Bedeli (₺)</label>
+
+                                                {{ trafik_form.arac_bedeli }}
+                                                <!-- /.input group -->
+                                            </div>
+                                            <!-- /.form-group -->
+                                            <div class="form-group">
+                                                <label>Koltuk Sayısı</label>
+
+                                                {{ trafik_form.koltuk_sayisi }}
+                                                <!-- /.input group -->
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tescil Tarihi</label>
+                                                <div class="input-group">
+
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+
+                                                    {{ trafik_form.tescil_tarihi }}
+                                                    <!-- /.input group -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+
+
+                                                <label>Araç Faturalı</label>
+                                               {{ trafik_form.arac_faturali }}
+                                            </div>
+
+                                             <div class="form-group">
+                                                <label>Fatura Tarihi</label>
+                                                <div class="input-group">
+
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+
+                                                    {{ trafik_form.fatura_tarihi }}
+                                                    <!-- /.input group -->
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+
+
+                            <div class="form-group">
+                                <label>Teklif İstenen Şirketler</label>
+                                {{ sirket_sec.sirketler }}  </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- -->
+
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                        <button type="submit" value="Submit" class="btn btn-primary pull-right">Kaydet</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </section>
+
+
+{% endblock %}

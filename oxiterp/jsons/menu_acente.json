@@ -1,0 +1,112 @@
+[
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 1,
+    "fields": {
+      "name": "Anasayfa",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-home",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 2,
+    "fields": {
+      "name": "İstatistik",
+      "url": "insurance:acente-istatistik",
+      "is_parent": false,
+      "fa_icon": "fa-bar-chart",
+      "parent": 1
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 3,
+    "fields": {
+      "name": "Acente",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-briefcase",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 4,
+    "fields": {
+      "name": "Ödemelerim",
+      "url": "insurance:odemelerim",
+      "is_parent": false,
+      "fa_icon": "fa-money",
+      "parent": 3
+    }
+  },
+  {
+    "model": "insurance.menuAcente",
+    "pk": 5,
+    "fields": {
+      "name": "Şifre Değiştir",
+      "url": "",
+      "is_parent": false,
+      "fa_icon": "fa-lock",
+      "parent": 3
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 6,
+    "fields": {
+      "name": "Trafik Sigortası",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-car",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 7,
+    "fields": {
+      "name": "Teklif Talebi Oluştur",
+      "url": "insurance:trafik-teklif-iste",
+      "is_parent": false,
+      "fa_icon": "fa-share",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 8,
+    "fields": {
+      "name": "Teklif Taleplerim",
+      "url": "insurance:trafik-teklif-talepleri",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 9,
+    "fields": {
+      "name": "Poliçelerim",
+      "url": "insurance:trafik-acente-policelerim",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 6
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 10,
+    "fields": {
+      "name": "Müşterilerim",
+      "url": "insurance:acente-musterileri",
+      "is_parent": false,
+      "fa_icon": "fa-user",
+      "parent": 3
+    }
+  }
+]

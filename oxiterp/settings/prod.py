@@ -10,15 +10,22 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'oxiterp',
-        'USER': 'postgres',
+        'USER': 'oxitowner',
         'PASSWORD': 'oxit2016',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
+STATIC_ROOT = "/var/www/static/"
+
+STAICFILES_DIR = [
+
+    "/var/www/static/"
+
+]
 
 try:
     from oxiterp.settings.local import *
-except :
+except:
     pass

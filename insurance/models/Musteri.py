@@ -1,5 +1,7 @@
 from django.db import models
 
+from insurance.models import Acente
+
 
 class Musteri(models.Model):
     MALE = 'Erkek'
@@ -18,5 +20,6 @@ class Musteri(models.Model):
     tc = models.CharField(max_length=128, null=True, blank=True, verbose_name='T.C. Kimlik Numarası')
     vergi_no = models.CharField(max_length=128, null=True, blank=True, verbose_name='Vergi Numarası')
     dogum_tarihi = models.DateField(null=True, verbose_name='Doğum Tarihi')
+    acente = models.ForeignKey(Acente, on_delete=models.CASCADE, default=None, null=True)
     creationDate = models.DateTimeField(auto_now_add=True, verbose_name='Kayıt Tarihi')
     modificationDate = models.DateTimeField(auto_now=True, verbose_name='Güncelleme Tarihi')

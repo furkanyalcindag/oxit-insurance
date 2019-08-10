@@ -7,3 +7,7 @@ from .Ayar import Ayar
 from .SigortaTipi import SigortaTipi
 from .Teklif import Teklif
 from .TeklifTalep import TeklifTalep
+from .TrafikPolice import TrafikPolice
+from .Odeme import Odeme
+from .MenuAcente import MenuAcente
+from .MenuAnaAcente import MenuAnaAcente

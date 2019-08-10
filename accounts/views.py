@@ -22,7 +22,12 @@ def index(request):
 def login(request):
 
     if request.user.is_authenticated is True:
-        return redirect('insurance:acente-ekle')
+        if request.user.groups.all()[0].name == "Acente":
+            return redirect('insurance:trafik-acente-policelerim')
+        else:
+
+            return redirect('insurance:acente-policeleri')
+
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -33,10 +38,14 @@ def login(request):
             # correct username and password login the user
             auth.login(request, user)
             #return render(request, 'patient/:patient/index', context={})
-            return redirect('insurance:acente-ekle')
+            if user.groups.all()[0].name == "Acente":
+                return redirect('insurance:trafik-acente-policelerim')
+            else:
+
+                return redirect('insurance:acente-policeleri')
 
         else:
-            messages.add_message(request, messages.SUCCESS, 'todo')
+            messages.add_message(request, messages.SUCCESS, 'Kullanıcı adı veya şifre hatalı')
             return render(request, 'registration/login.html')
 
     return render(request, 'registration/login.html')

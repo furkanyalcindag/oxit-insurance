@@ -1,0 +1,24 @@
+[
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 1,
+    "fields": {
+      "tip": "Trafik",
+
+    }
+  },
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 2,
+    "fields": {
+       "tip": "Kasko"
+    }
+  },
+  {
+    "model": "insurance.SigortaTipi",
+    "pk": 3,
+    "fields": {
+      "tip": "DASK"
+    }
+  }
+]

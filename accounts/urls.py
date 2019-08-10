@@ -5,11 +5,11 @@ from accounts.forms import LoginForm
 from . import views
 
 
-
+app_name = 'accounts'
 
 urlpatterns = [
-   path('', views.index, name='index'),
-   path('login/', views.login)
+   #path('', views.index, name='index'),
+   path('', views.login)
 
 ]
 
