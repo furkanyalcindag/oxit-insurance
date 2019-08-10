@@ -164,6 +164,8 @@ STATICFILES_DIRS = (os.path.join('oxiterp/static'),)
 
 LOGIN_REDIRECT_URL = '/sigorta'
 
+LOGIN_URL ='/'
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 

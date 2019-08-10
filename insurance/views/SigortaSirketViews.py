@@ -1,10 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from insurance.Forms.SigortaSirketiForm import SigortaSirketiForm
 from insurance.models import SigortaSirketi
 
-
+@login_required
 def sirket_ekle(request):
     form = SigortaSirketiForm()
     if request.method == 'POST':
@@ -20,7 +21,7 @@ def sirket_ekle(request):
 
     return render(request, 'SigortaSirketi/sigorta-sirketi-ekle.html', {'form': form})
 
-
+@login_required
 def sirke_guncelle(request, pk):
     sirket = SigortaSirketi.objects.get(pk=pk)
 
@@ -38,7 +39,7 @@ def sirke_guncelle(request, pk):
 
     return render(request, 'SigortaSirketi/sigorta-sirketi-ekle.html', {'form': form})
 
-
+@login_required
 def sirket_liste(request):
     sirketler = SigortaSirketi.objects.all()
     return render(request, 'SigortaSirketi/sigorta-sirket-listesi.html', {'sirketler': sirketler})

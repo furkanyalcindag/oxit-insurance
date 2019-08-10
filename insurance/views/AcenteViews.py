@@ -130,7 +130,7 @@ def acente_guncelle(request, pk):
 
     return render(request, 'Acente/acente-ekle.html', {'form': form, 'form_acente': form_acente})
 
-
+@login_required
 def acente_musterileri(request):
     acente = Acente.objects.get(user=request.user)
 
