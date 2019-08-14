@@ -8,6 +8,8 @@ from insurance.Forms.Acente.TrafikForm import TrafikForm
 from insurance.Forms.Acente.TrafikPoliceForm import TrafikPoliceForm
 from insurance.models import TrafikSigortasi, TeklifTalep, SigortaSirketi, Teklif, Ayar, TrafikPolice
 from insurance.models.TalepObject import TalepObject
+from insurance.models.TalepTeklifObject import TalepTeklifObject
+
 
 @login_required
 def bekleyen_talepler(request):
@@ -24,6 +26,7 @@ def bekleyen_talepler(request):
 
     return render(request, 'AnaAcente/bekleyen_talepler.html', {'talepler': talep_objeleri})
 
+
 @login_required
 def cevaplanan_talepler(request):
     teklif_talepleri = TeklifTalep.objects.filter(cevaplandi=True).order_by('-id')
@@ -32,12 +35,14 @@ def cevaplanan_talepler(request):
 
     for talep in teklif_talepleri:
         sigorta = TrafikSigortasi.objects.get(id=talep.sigorta_id)
-        obje = TalepObject(id=talep.id, acente=talep.acente, sigorta_tipi=talep.sigortaTipi, sigorta=sigorta,
-                           sigorta_sirketleri=talep.sigorta_Sirketleri.all(), cevaplandi=talep.cevaplandi,
-                           olusturulma_tarihi=talep.creationDate)
+        teklif = Teklif.objects.get(teklif_talep=talep, teklif_kabul=True)
+        obje = TalepTeklifObject(id=talep.id, acente=talep.acente, sigorta_tipi=talep.sigortaTipi, sigorta=sigorta,
+                                 sigorta_sirketleri=talep.sigorta_Sirketleri.all(), cevaplandi=talep.cevaplandi,
+                                 olusturulma_tarihi=talep.creationDate, teklif=teklif)
         talep_objeleri.append(obje)
 
     return render(request, 'AnaAcente/bekleyen_talepler.html', {'talepler': talep_objeleri})
+
 
 @login_required
 def trafikTeklifVer(request, pk):
@@ -77,6 +82,7 @@ def trafikTeklifVer(request, pk):
                       {'musteri_form': musteriForm, 'trafik_form': trafikForm,
                        'sirketler': teklif_talep.sigorta_Sirketleri.all(), 'teklifler': teklif})
 
+
 @login_required
 def trafikTeklifIncele(request, pk):
     teklif_talep = TeklifTalep.objects.get(pk=pk)
@@ -93,6 +99,7 @@ def trafikTeklifIncele(request, pk):
                   {'musteri_form': musteriForm, 'trafik_form': trafikForm,
                    'sirketler': teklif_talep.sigorta_Sirketleri.all(), 'teklifler': teklif})
 
+
 @login_required
 def trafik_police_olustur(request, pk):
     teklif = Teklif.objects.filter(pk=pk)
@@ -107,20 +114,24 @@ def trafik_police_olustur(request, pk):
     teklif_p = teklif[0]
 
     if request.method == "POST":
-
         policeForm = TrafikPoliceForm(request.POST, request.FILES)
-        teklif_p.police_mi = True
-        teklif_p.prim_tutari = (teklif_p.teklif_tutari * int(Ayar.objects.get(name="trafik_prim").value))/100
-        teklif_p.save()
-        police = TrafikPolice(teklif=teklif_p,police_file=policeForm.cleaned_data['police_file'])
-        police.save()
-        return redirect("insurance:acente-policeleri")
+        if policeForm.is_valid():
 
+            teklif_p.police_mi = True
+            teklif_p.prim_tutari = (teklif_p.teklif_tutari * int(Ayar.objects.get(name="trafik_prim").value)) / 100
+            teklif_p.save()
+            police = TrafikPolice(teklif=teklif_p, police_file=policeForm.cleaned_data['police_file'])
+            police.save()
+            messages.success(request,'Poliçe başarıyla oluşturuldu.')
+            return redirect("insurance:acente-policeleri")
+        else:
+            messages.warning(request,'Form alanlarını kontrol ediniz')
     return render(request, 'AnaAcente/trafik_police_olustur.html',
                   {'musteri_form': musteriForm, 'trafik_form': trafikForm,
                    'police_form': policeForm, 'sirketler': teklif[0].sigorta_sirket, 'teklifler': teklif})
 
+
 @login_required
 def acente_policeleri(request):
     policeler = TrafikPolice.objects.all()
-    return render(request,"AnaAcente/acente-policeleri.html", {"policeler":policeler})
+    return render(request, "AnaAcente/acente-policeleri.html", {"policeler": policeler})

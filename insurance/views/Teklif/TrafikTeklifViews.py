@@ -4,12 +4,14 @@ from django.db.models.signals import m2m_changed
 from django.shortcuts import render, redirect
 
 import insurance
+from insurance.Forms.KrediKartiForm import KrediKartiForm
 from insurance.Forms.MusteriForm import MusteriForm
 from insurance.Forms.SirketSecForm import SirketSecForm
 from insurance.Forms.TrafikForm import TrafikForm
 from insurance.models import Musteri, Acente, SigortaSirketi, TeklifTalep, SigortaTipi, TrafikSigortasi, Teklif, \
-    TrafikPolice
+    TrafikPolice, KrediKarti
 from insurance.models.TalepObject import TalepObject
+
 
 @login_required
 def teklif_olustur_trafik(request):
@@ -59,6 +61,7 @@ def teklif_olustur_trafik(request):
                     teklif_talep.sigorta_Sirketleri.add(sirket)
 
                 teklif_talep.save()
+                return redirect('insurance:trafik-teklif-talepleri')
             except Exception as e:
 
                 messages.warning(request, "Form alanlarını kontrol ediniz")
@@ -94,29 +97,14 @@ def teklif_taleplerim(request):
 
     return render(request, 'TrafikSigortasi/teklif-talepleri.html', {'talepler': talep_objeleri})
 
+
 @login_required
 def teklif_cevapla(request, pk):
     teklif_talep = TeklifTalep.objects.get(pk=pk)
 
     sigorta = TrafikSigortasi.objects.get(id=teklif_talep.sigorta_id)
 
-    if request.method == 'POST':
-
-        teklif = Teklif.objects.get(id=int(request.POST['teklif']))
-        if teklif.teklif_kabul == True:
-            return redirect("insurance:trafik-teklif-talepleri")
-        teklif.teklif_kabul = True
-        teklif.kapandi = True
-
-        teklif.save()
-
-        teklifler = Teklif.objects.filter(teklif_talep=teklif_talep)
-
-        for teklifd in teklifler:
-            teklifd.kapandi = True
-            teklifd.save()
-
-        return redirect("insurance:trafik-teklif-talepleri")
+    kart_form = KrediKartiForm()
 
     musteriForm = insurance.Forms.Acente.MusteriForm.MusteriForm(request.POST or None, instance=sigorta.sigortali)
 
@@ -124,9 +112,46 @@ def teklif_cevapla(request, pk):
 
     teklif = Teklif.objects.filter(teklif_talep=teklif_talep)
 
+    if request.method == 'POST':
+
+        kart_form = KrediKartiForm(request.POST)
+
+        if kart_form.is_valid():
+
+            teklif = Teklif.objects.get(id=int(request.POST['teklif']))
+            if teklif.teklif_kabul == True:
+                return redirect("insurance:trafik-teklif-talepleri")
+            teklif.teklif_kabul = True
+            teklif.kapandi = True
+
+            teklif.save()
+
+            kredi_karti = KrediKarti(teklif=teklif, kart_no=kart_form.cleaned_data.get('kart_no'),
+                                     ad_soyad=kart_form.cleaned_data.get('ad_soyad'),
+                                     gecerlilik_tarihi=kart_form.cleaned_data.get('gecerlilik_tarihi'),
+                                     cv2=kart_form.cleaned_data.get('cv2'),
+                                     odeme_sekli=kart_form.cleaned_data.get('odeme_sekli'),
+                                     banka=kart_form.cleaned_data.get('banka'))
+
+            kredi_karti.save()
+
+            teklifler = Teklif.objects.filter(teklif_talep=teklif_talep)
+
+            for teklifd in teklifler:
+                teklifd.kapandi = True
+                teklifd.save()
+
+            messages.success(request, "Teklif başarıyla kabul edildi")
+            return redirect("insurance:trafik-teklif-talepleri")
+        else:
+            return render(request, 'TrafikSigortasi/teklif-onayla.html',
+                          {'musteri_form': musteriForm, 'trafik_form': trafikForm, 'kart_form': kart_form,
+                           'sirketler': teklif_talep.sigorta_Sirketleri.all(), 'teklifler': teklif})
+
     return render(request, 'TrafikSigortasi/teklif-onayla.html',
-                  {'musteri_form': musteriForm, 'trafik_form': trafikForm,
+                  {'musteri_form': musteriForm, 'trafik_form': trafikForm, 'kart_form': kart_form,
                    'sirketler': teklif_talep.sigorta_Sirketleri.all(), 'teklifler': teklif})
+
 
 @login_required
 def acente_policeleri(request):

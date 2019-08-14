@@ -43,6 +43,98 @@
             <form method="post" enctype="multipart/form-data" class="content">
                 <div class="box box-default">
                     {% csrf_token %}
+
+                    <div class="box-body">
+                        <!-- -->
+                        <div class="row" style="margin: 0px">
+
+
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i
+                                            class="fas fa-user-graduate"></i>Kredi Kartı Bilgileri</a></li>
+
+
+                                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <!-- -->
+                                        <div class="row">
+
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label> Banka Adı</label>
+                                                    {{ kart_form.banka }}
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label> Kart Sahibi Adı Soyadı</label>
+                                                    {{ kart_form.ad_soyad }}
+                                                </div>
+                                                <!-- /.form-group -->
+
+                                                <div class="form-group">
+                                                    <label> Kart Numarası</label>
+                                                    {{ kart_form.kart_no }}
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label> Geçerlilik Tarihi</label>
+                                                    {{ kart_form.gecerlilik_tarihi }}
+
+
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+
+
+                                                    <label> CV2</label>
+                                                    {{ kart_form.cv2 }}
+
+                                                </div>
+
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-6">
+
+
+
+
+                                                <div class="form-group">
+                                                    <label> Ödeme Şekli</label>
+                                                    {{ kart_form.odeme_sekli }}
+                                                </div>
+
+                                                 <div class="form-group">
+                                                    <label> Açıklama</label>
+                                                    {{ kart_form.aciklama }}
+                                                </div>
+
+
+                                                <!-- -->
+
+
+                                                <!-- /.form-group -->
+                                            </div>
+
+
+                                            <!-- /.row -->
+                                        </div>
+
+
+                                        <!-- -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="box-body" lang="en-US">
 
 
@@ -73,28 +165,32 @@
 
 
 
-                                            {% if teklifler.all %}
-                                                {% for teklif in teklifler %}
+                                        {% if teklifler.all %}
+                                            {% for teklif in teklifler %}
 
-                                                    {% if teklif.sigorta_sirket == sirket %}
-                                                        <td>{{ teklif.teklif_tutari }}</td>
+                                                {% if teklif.sigorta_sirket == sirket %}
+                                                    <td>{{ teklif.teklif_tutari }}</td>
 
 
-                                                        <td><div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="teklif"
-                                                                   id="exampleRadios1" value="{{ teklif.id }}" checked>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                   name="teklif"
+                                                                   id="exampleRadios1" value="{{ teklif.id }}"
+                                                                   checked>
                                                             <label class="form-check-label" for="exampleRadios1">
                                                                 Teklif Seç
                                                             </label>
-                                                        </div> </td>
-                                                    {% endif %}
+                                                        </div>
+                                                    </td>
+                                                {% endif %}
 
-                                                {% endfor %}
+                                            {% endfor %}
 
-                                            {% else %}
+                                        {% else %}
 
 
-                                            {% endif %}
+                                        {% endif %}
 
 
 
@@ -112,17 +208,17 @@
 
                             </tbody>
 
-                         <tfoot>
-                        <tr>
-                            <th></th>
-                            <th></th>
+                            <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
 
-<th></th>
-                            <th><input class="btn btn-success " type="submit" value="Teklif Seç"/></th>
+                                <th></th>
+                                <th><input class="btn btn-success " type="submit" value="Teklif Seç"/></th>
 
 
-                        </tr>
-                        </tfoot>
+                            </tr>
+                            </tfoot>
 
                         </table>
 

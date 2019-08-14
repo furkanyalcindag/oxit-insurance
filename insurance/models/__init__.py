@@ -11,3 +11,4 @@ from .TrafikPolice import TrafikPolice
 from .Odeme import Odeme
 from .MenuAcente import MenuAcente
 from .MenuAnaAcente import MenuAnaAcente
+from .KrediKarti import KrediKarti

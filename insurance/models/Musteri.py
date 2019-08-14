@@ -1,6 +1,7 @@
 from django.db import models
 
 from insurance.models import Acente
+from oxiterp.settings import base
 
 
 class Musteri(models.Model):

@@ -1,6 +1,8 @@
 from django.db import models
 
 from insurance.models.Musteri import Musteri
+from oxiterp import settings
+from oxiterp.settings import base
 
 
 class TrafikSigortasi(models.Model):
