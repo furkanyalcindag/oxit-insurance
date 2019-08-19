@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
-from insurance.views import AcenteViews, SigortaSirketViews, AyarViews
-from insurance.views.AnaAcenteViews import AnaAcenteViews
-from insurance.views.Teklif import TrafikTeklifViews
+from insurance.views import AcenteViews, SigortaSirketViews, AyarViews, ZeyilViews
+from insurance.views.AnaAcenteViews import AnaAcenteViews, KaskoAnaAcenteViews
+from insurance.views.Teklif import TrafikTeklifViews, KaskoTeklifViews
 
 app_name = 'insurance'
 
@@ -33,14 +33,43 @@ urlpatterns = [
     url(r'^odemelerim/$', TrafikTeklifViews.acente_policeleri,
         name='odemelerim'),
 
-    # anaacente
+    # anaacente trafik
 
     url(r'bekleyen-trafik-teklif/$', AnaAcenteViews.bekleyen_talepler, name='bekleyen-trafik-istek'),
     url(r'cevaplanan-trafik-teklif/$', AnaAcenteViews.cevaplanan_talepler, name='cevaplanan-trafik-istek'),
     url(r'^trafik-teklif-olustur/(?P<pk>\d+)$', AnaAcenteViews.trafikTeklifVer, name='trafik-olustur'),
     url(r'^trafik-teklif-incele/(?P<pk>\d+)$', AnaAcenteViews.trafikTeklifIncele, name='trafik-incele'),
-    url(r'^trafik-police-olustur/(?P<pk>\d+)$', AnaAcenteViews.trafik_police_olustur, name='trafik-police-olustur'),
+    url(r'^trafik-police-olustur/(?P<pk>\d+)$', AnaAcenteViews.trafik_police_olustur, name='trafik-policesi-olustur'),
 
     url(r'^trafik-acente-policeleri/$', AnaAcenteViews.acente_policeleri, name='acente-policeleri'),
+
+    # kasko
+    url(r'kasko-teklif-iste/$', KaskoTeklifViews.teklif_olustur_kasko, name='kasko-teklif-iste'),
+    url(r'kasko-teklif-talepleri/$', KaskoTeklifViews.kasko_teklif_taleplerim, name='kasko-teklif-talepleri'),
+    url(r'^kasko-teklif-cevapla/(?P<pk>\d+)$', KaskoTeklifViews.teklif_cevapla, name='kasko-teklif-cevapla'),
+    url(r'^kasko-acente-policelerim/$', KaskoTeklifViews.acente_kasko_policeleri,
+        name='kasko-acente-policelerim'),
+
+    # anaacente kasko
+
+    url(r'bekleyen-kasko-teklif/$', KaskoAnaAcenteViews.kasko_bekleyen_talepler, name='bekleyen-kasko-istek'),
+    url(r'cevaplanan-kasko-teklif/$', KaskoAnaAcenteViews.kasko_cevaplanan_talepler, name='cevaplanan-kasko-istek'),
+    url(r'^kasko-teklif-olustur/(?P<pk>\d+)$', KaskoAnaAcenteViews.KaskoTeklifVer, name='kasko-olustur'),
+    url(r'^kasko-teklif-incele/(?P<pk>\d+)$', KaskoAnaAcenteViews.kaskoTeklifIncele, name='kasko-incele'),
+    url(r'^kasko-police-olustur/(?P<pk>\d+)$', KaskoAnaAcenteViews.kasko_police_olustur, name='kasko-police-olustur'),
+
+    url(r'^kasko-acente-policeleri/$', KaskoAnaAcenteViews.acente_policeleri, name='kasko-acente-policeleri'),
+
+
+
+    #Acente Zeyil
+
+    url(r'zeyil-talebi-olustur/$', ZeyilViews.zeyil_olustur, name='zeyil-talebi-olustur'),
+    url(r'acente-zeyil-talepleri/$', ZeyilViews.zeyil_taleplerim, name='acente-zeyil-talepleri'),
+
+    # AnaAcente Zeyil
+
+    url(r'zeyil-talebi-durum-guncelle/(?P<pk>\d+)$', ZeyilViews.zeyil_durum_guncelle, name='zeyil-durum-guncelle'),
+    url(r'zeyil-talepleri/$', ZeyilViews.zeyil_talepleri_tum, name='zeyil-istekleri'),
 
 ]

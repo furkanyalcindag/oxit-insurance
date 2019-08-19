@@ -3,114 +3,38 @@
 
 {% block content %}
 
-
-{% if messages %}
-    <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-ban"></i> Hata!</h4>
-
-
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
+    <section>
+        {% if messages %}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Hata!</h4>
 
 
-    </div>
-{% endif %}
-<section class="content">
-
-
-    <div class="box box-default">
-        <div class="box-header with-border">
-            <h3 class="box-title">Trafik Sigortası Police Oluştur</h3>
-
-            <div class="box-tools pull-right">
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
 
 
             </div>
-        </div>
-        <!-- /.box-header -->
-
-        <script>
-            function setTwoNumberDecimal(event) {
-                this.value = parseFloat(this.value).toFixed(2);
-            }
-        </script>
-        <form method="post" enctype="multipart/form-data" class="content">
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data" class="content">
             <div class="box box-default">
-                {% csrf_token %}
-                <div class="box-body" lang="en-US">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Kasko Sigortası Teklif Talebi</h3>
 
-
-                    <table id="example1" class="table table-bordered table-striped">
-
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Şirket</th>
-                            <th>Teklif</th>
-                             <th>Poliçe Numarası</th>
-                            <th>Poliçe Yukle</th>
-
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-
-                        <tr>
-
-
-
-
-
-
-                                    {% for teklif in teklifler %}
-                                         <td>{{ forloop.counter }} </td>
-
-                                   <td> {{ teklif.sigorta_sirket.sirket_adi }}</td>
-                                         <td> {{ teklif.teklif_tutari }} ₺</td>
-                                         <td> {{ police_form.police_numarasi }} </td>
-                                   <td> {{ police_form.police_file }} </td>
-
-
-
-                                {% endfor %}
-
-
-
-
-
-
-                        </tr>
-
-
-                        </tbody>
-
-                     <tfoot>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-
-
-                            <th><input class="btn btn-success " type="submit" value="Poliçe Oluştur"/></th>
-
-
-                        </tr>
-                        </tfoot>
-
-
-                    </table>
-
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <form>
-            <div class="box box-default">
+                <!-- /.box-header -->
 
+
+                {% csrf_token %}
                 <div class="box-body">
                     <!-- -->
                     <div class="row" style="margin: 0px">
@@ -122,10 +46,8 @@
                                         class="fas fa-user-graduate"></i>Müşteri Bilgileri</a></li>
                                 <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i
                                         class="fas fa-user-friends"></i>Araç Bilgileri</a></li>
-                                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false"><i
+                                 <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false"><i
                                         class="fas fa-user-friends"></i>Araç Bedel Bilgileri</a></li>
-                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false"><i
-                                        class="fas fa-user-friends"></i>Ödeme Bilgileri</a></li>
 
                                 <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
                                 </li>
@@ -227,7 +149,7 @@
                                 <!-- /.tab-pane -->
 
 
-                                <!-- veli formu ekranı -->
+
                                 <div class="tab-pane" id="tab_2">
 
                                     <div class="row">
@@ -237,14 +159,20 @@
 
                                             <div class="form-group">
                                                 <label> Plaka</label>
-                                                {{ trafik_form.arac_plaka }}
+                                                {{ kasko_form.arac_plaka }}
+
+                                            </div>
+
+                                             <div class="form-group">
+                                                <label> Plaka Değişikliği Varsa Yeni Plaka</label>
+                                                {{ kasko_form.yeni_plaka }}
 
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Belge Seri No</label>
 
-                                                {{ trafik_form.belge_seri_no }}
+                                                {{ kasko_form.belge_seri_no }}
                                                 <!-- /.input group -->
                                             </div>
 
@@ -252,21 +180,21 @@
                                             <div class="form-group">
                                                 <label>Araç Marka</label>
 
-                                                {{ trafik_form.arac_marka }}
+                                                {{ kasko_form.arac_marka }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Araç Tipi</label>
 
-                                                {{ trafik_form.arac_tipi }}
+                                                {{ kasko_form.arac_tipi }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Araç Model Yılı</label>
 
-                                                {{ trafik_form.model_yili }}
+                                                {{ kasko_form.model_yili }}
                                                 <!-- /.input group -->
                                             </div>
 
@@ -275,37 +203,44 @@
                                         <div class="col-md-4" style="border-left: 1px solid black;">
 
                                             <div class="form-group">
+                                                <label>Marka Kodu</label>
+
+                                                {{ kasko_form.arac_marka_kodu }}
+                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label>Şasi No</label>
 
-                                                {{ trafik_form.sasi_numarasi }}
+                                                {{ kasko_form.sasi_numarasi }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>IMM No</label>
 
-                                                {{ trafik_form.imm }}
+                                                {{ kasko_form.imm }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Motor Numarası</label>
 
-                                                {{ trafik_form.motor_numarasi }}
+                                                {{ kasko_form.motor_numarasi }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Belge Seri No</label>
 
-                                                {{ trafik_form.belge_seri_no }}
+                                                {{ kasko_form.belge_seri_no }}
                                                 <!-- /.input group -->
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Kullanım Tarzı</label>
 
-                                                {{ trafik_form.kullanim_tarzi }}
+                                                {{ kasko_form.kullanim_tarzi }}
                                                 <!-- /.input group -->
                                             </div>
 
@@ -317,14 +252,14 @@
                                             <div class="form-group">
                                                 <label>Araç Bedeli (₺)</label>
 
-                                                {{ trafik_form.arac_bedeli }}
+                                                {{ kasko_form.arac_bedeli }}
                                                 <!-- /.input group -->
                                             </div>
                                             <!-- /.form-group -->
                                             <div class="form-group">
                                                 <label>Koltuk Sayısı</label>
 
-                                                {{ trafik_form.koltuk_sayisi }}
+                                                {{ kasko_form.koltuk_sayisi }}
                                                 <!-- /.input group -->
                                             </div>
                                             <div class="form-group">
@@ -335,7 +270,7 @@
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
 
-                                                    {{ trafik_form.tescil_tarihi }}
+                                                    {{ kasko_form.tescil_tarihi }}
                                                     <!-- /.input group -->
                                                 </div>
                                             </div>
@@ -343,10 +278,10 @@
 
 
                                                 <label>Araç Faturalı</label>
-                                                {{ trafik_form.arac_faturali }}
+                                               {{ kasko_form.arac_faturali }}
                                             </div>
 
-                                            <div class="form-group">
+                                             <div class="form-group">
                                                 <label>Fatura Tarihi</label>
                                                 <div class="input-group">
 
@@ -354,7 +289,7 @@
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
 
-                                                    {{ trafik_form.fatura_tarihi }}
+                                                    {{ kasko_form.fatura_tarihi }}
                                                     <!-- /.input group -->
                                                 </div>
                                             </div>
@@ -366,11 +301,12 @@
                                     </div>
 
 
-
-
                                 </div>
+                                <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="tab_4">
+
+
+                                <div class="tab-pane" id="tab_3">
                                     <!-- -->
                                     <div class="row">
 
@@ -427,100 +363,34 @@
                                     <!-- -->
 
 
-                                </div>
-                                <div class="tab-pane active" id="tab_3">
-                                        <!-- -->
-                                        <div class="row">
-
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label> Banka Adı</label>
-                                                    {{ kart_form.banka }}
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label> Kart Sahibi Adı Soyadı</label>
-                                                    {{ kart_form.ad_soyad }}
-                                                </div>
-                                                <!-- /.form-group -->
-
-                                                <div class="form-group">
-                                                    <label> Kart Numarası</label>
-                                                    {{ kart_form.kart_no }}
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label> Geçerlilik Tarihi</label>
-                                                    {{ kart_form.gecerlilik_tarihi }}
-
-
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-
-
-                                                    <label> CV2</label>
-                                                    {{ kart_form.cv2 }}
-
-                                                </div>
-
-                                            </div>
-                                            <!-- /.col -->
-                                            <div class="col-md-6">
-
-
-
-
-                                                <div class="form-group">
-                                                    <label> Ödeme Şekli</label>
-                                                    {{ kart_form.odeme_sekli }}
-                                                </div>
-
-                                                 <div class="form-group">
-                                                    <label> Açıklama</label>
-                                                    {{ kart_form.aciklama }}
-                                                </div>
-
-
-                                                <!-- -->
-
-
-                                                <!-- /.form-group -->
-                                            </div>
-
-
-                                            <!-- /.row -->
-                                        </div>
-
-
-                                        <!-- -->
-
-
-                                    </div>
-                                <!-- /.tab-pane -->
-
-                                <!-- /.tab-pane -->
+                                </div><!-- /.tab-pane -->
                             </div>
                             <!-- /.tab-content -->
 
 
+                            <div class="form-group">
+                                <label>Teklif İstenen Şirketler</label>
+                                {{ sirket_sec.sirketler }}  </div>
                         </div>
 
 
                     </div>
 
-                    <!-- </-->
+                    <!-- -->
 
 
                     <!-- /.box-body -->
+                    <div class="box-footer">
+
+                        <button type="submit" value="Submit" class="btn btn-primary pull-right">Kaydet</button>
+                    </div>
+
 
                 </div>
+
             </div>
-
-    </div>
-
-</section>
+        </form>
+    </section>
 
 
 {% endblock %}

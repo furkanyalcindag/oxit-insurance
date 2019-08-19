@@ -10,17 +10,7 @@
       "parent": null
     }
   },
-  {
-    "model": "insurance.MenuAcente",
-    "pk": 2,
-    "fields": {
-      "name": "İstatistik",
-      "url": "insurance:acente-istatistik",
-      "is_parent": false,
-      "fa_icon": "fa-bar-chart",
-      "parent": 1
-    }
-  },
+
   {
     "model": "insurance.MenuAcente",
     "pk": 3,
@@ -32,28 +22,8 @@
       "parent": null
     }
   },
-  {
-    "model": "insurance.MenuAcente",
-    "pk": 4,
-    "fields": {
-      "name": "Ödemelerim",
-      "url": "insurance:odemelerim",
-      "is_parent": false,
-      "fa_icon": "fa-money",
-      "parent": 3
-    }
-  },
-  {
-    "model": "insurance.menuAcente",
-    "pk": 5,
-    "fields": {
-      "name": "Şifre Değiştir",
-      "url": "",
-      "is_parent": false,
-      "fa_icon": "fa-lock",
-      "parent": 3
-    }
-  },
+
+
   {
     "model": "insurance.MenuAcente",
     "pk": 6,
@@ -108,5 +78,91 @@
       "fa_icon": "fa-user",
       "parent": 3
     }
+  },
+
+
+
+
+
+
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 11,
+    "fields": {
+      "name": "Kasko Sigortası",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-car",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 12,
+    "fields": {
+      "name": "Teklif Talebi Oluştur",
+      "url": "insurance:kasko-teklif-iste",
+      "is_parent": false,
+      "fa_icon": "fa-share",
+      "parent": 11
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 13,
+    "fields": {
+      "name": "Teklif Taleplerim",
+      "url": "insurance:kasko-teklif-talepleri",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 11
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 14,
+    "fields": {
+      "name": "Kasko Poliçelerim",
+      "url": "insurance:kasko-acente-policelerim",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 11
+    }
+  },
+
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 15,
+    "fields": {
+      "name": "Zeyil",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-chain-broken",
+      "parent": null
+    }
+  },
+
+   {
+    "model": "insurance.MenuAcente",
+    "pk": 16,
+    "fields": {
+      "name": "Zeyil Talebi Oluştur",
+      "url": "insurance:zeyil-talebi-olustur",
+      "is_parent": false,
+      "fa_icon": "fa-user-times",
+      "parent": 15
+    }
+  },
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 17,
+    "fields": {
+      "name": "Zeyil Talebi Oluştur",
+      "url": "insurance:acente-zeyil-talepleri",
+      "is_parent": false,
+      "fa_icon": "fa-user-times",
+      "parent": 15
+    }
   }
+
 ]

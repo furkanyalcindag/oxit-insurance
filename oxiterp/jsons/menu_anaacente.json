@@ -10,17 +10,7 @@
       "parent": null
     }
   },
-  {
-    "model": "insurance.MenuAnaAcente",
-    "pk": 2,
-    "fields": {
-      "name": "İstatistik",
-      "url": "insurance:acente-istatistik",
-      "is_parent": false,
-      "fa_icon": "fa-bar-chart",
-      "parent": 1
-    }
-  },
+
   {
     "model": "insurance.MenuAnaAcente",
     "pk": 3,
@@ -69,7 +59,7 @@
     "model": "insurance.MenuAnaAcente",
     "pk": 7,
     "fields": {
-      "name": "Bekleyen Talepler,",
+      "name": "Bekleyen Talepler",
       "url": "insurance:bekleyen-trafik-istek",
       "is_parent": false,
       "fa_icon": "fa-share",
@@ -89,10 +79,10 @@
   },
   {
     "model": "insurance.MenuAnaAcente",
-    "pk": 9,
+    "pk": 20,
     "fields": {
       "name": "Poliçeler",
-      "url": "insurance:acente-poliçeleri",
+      "url": "insurance:acente-policeleri",
       "is_parent": false,
       "fa_icon": "fa-file-pdf-o",
       "parent": 6
@@ -111,6 +101,69 @@
 
 
   },
+
+
+
+
+
+
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 14,
+    "fields": {
+      "name": "Kasko Sigortası",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-car",
+      "parent": null
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 15,
+    "fields": {
+      "name": "Bekleyen Talepler",
+      "url": "insurance:bekleyen-kasko-istek",
+      "is_parent": false,
+      "fa_icon": "fa-share",
+      "parent": 14
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 16,
+    "fields": {
+      "name": "Cevaplanan Talepler",
+      "url": "insurance:cevaplanan-kasko-istek",
+      "is_parent": false,
+      "fa_icon": "fa-list",
+      "parent": 14
+    }
+  },
+  {
+    "model": "insurance.MenuAnaAcente",
+    "pk": 17,
+    "fields": {
+      "name": "Poliçeler",
+      "url": "insurance:kasko-acente-policeleri",
+      "is_parent": false,
+      "fa_icon": "fa-file-pdf-o",
+      "parent": 14
+    }
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     "model": "insurance.MenuAnaAcente",
     "pk": 10,
@@ -163,5 +216,29 @@
     }
 
 
+  },
+
+  {
+    "model": "insurance.MenuAcente",
+    "pk": 18,
+    "fields": {
+      "name": "Zeyil",
+      "url": "",
+      "is_parent": true,
+      "fa_icon": "fa-chain-broken",
+      "parent": null
+    }
+  },
+
+   {
+    "model": "insurance.MenuAcente",
+    "pk": 19,
+    "fields": {
+      "name": "Zeyil Talepleri",
+      "url": "insurance:zeyil-istekleri",
+      "is_parent": false,
+      "fa_icon": "fa-user-times",
+      "parent": 18
+    }
   }
 ]

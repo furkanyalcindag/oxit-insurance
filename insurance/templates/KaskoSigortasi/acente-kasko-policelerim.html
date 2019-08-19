@@ -123,7 +123,7 @@
                                 <th></th>
                                 <th>Acente</th>
 
-                                <th>Poliçe Numarası</th>
+
                                 <th>Sigorta Tutarı</th>
                                 <th>Acente Prim Tutarı</th>
 
@@ -144,7 +144,6 @@
                                     <td>{{ forloop.counter }} </td>
 
                                     <td>{{ police.teklif.teklif_talep.acente.acente_adi }}</td>
-                                    <td>{{ police.police_numarasi }}</td>
 
 
 
@@ -157,7 +156,7 @@
                                  <td><a href="/media/{{ police.police_file }}" target="_blank"> <i class="fa fa-file-pdf-o fa-2x " style="color: red" aria-hidden="true"></i></a></td>
 
                                     <td>
-                                   <a href="{% url "insurance:trafik-incele" police.teklif.teklif_talep.id %} " type="button" class="button btn btn-success">Sigorta Detay</a>
+                                   <a href="{% url "insurance:kasko-incele" police.teklif.teklif_talep.id %} " type="button" class="button btn btn-success">Sigorta Detay</a>
 
                                     </td>
 

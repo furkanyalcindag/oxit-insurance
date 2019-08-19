@@ -4,21 +4,26 @@
     "pk": 1,
     "fields": {
       "tip": "Trafik",
-
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
     }
   },
   {
     "model": "insurance.SigortaTipi",
     "pk": 2,
     "fields": {
-       "tip": "Kasko"
+      "tip": "Kasko",
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
     }
   },
   {
     "model": "insurance.SigortaTipi",
     "pk": 3,
     "fields": {
-      "tip": "DASK"
+      "tip": "DASK",
+      "creationDate": "2001-09-28 01:00:00",
+      "modificationDate": "2001-09-28 01:00:00"
     }
   }
 ]

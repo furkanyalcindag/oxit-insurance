@@ -3,10 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
+from insurance.Forms.Acente.KrediKartiForm import KrediKartiForm
 from insurance.Forms.Acente.MusteriForm import MusteriForm
 from insurance.Forms.Acente.TrafikForm import TrafikForm
 from insurance.Forms.Acente.TrafikPoliceForm import TrafikPoliceForm
-from insurance.models import TrafikSigortasi, TeklifTalep, SigortaSirketi, Teklif, Ayar, TrafikPolice
+from insurance.models import TrafikSigortasi, TeklifTalep, SigortaSirketi, Teklif, Ayar, TrafikPolice, KrediKarti
 from insurance.models.TalepObject import TalepObject
 from insurance.models.TalepTeklifObject import TalepTeklifObject
 
@@ -24,7 +25,7 @@ def bekleyen_talepler(request):
                            olusturulma_tarihi=talep.creationDate)
         talep_objeleri.append(obje)
 
-    return render(request, 'AnaAcente/bekleyen_talepler.html', {'talepler': talep_objeleri})
+    return render(request, 'AnaAcente/trafik_talepler.html', {'talepler': talep_objeleri})
 
 
 @login_required
@@ -32,16 +33,18 @@ def cevaplanan_talepler(request):
     teklif_talepleri = TeklifTalep.objects.filter(cevaplandi=True).order_by('-id')
 
     talep_objeleri = []
+    if teklif_talepleri is not None:
+        for talep in teklif_talepleri:
+            sigorta = TrafikSigortasi.objects.get(id=talep.sigorta_id)
+            teklif = Teklif.objects.filter(teklif_talep=talep, teklif_kabul=True, police_mi=False)
+            if teklif.count() != 0:
+                obje = TalepTeklifObject(id=talep.id, acente=talep.acente, sigorta_tipi=talep.sigortaTipi,
+                                         sigorta=sigorta,
+                                         sigorta_sirketleri=talep.sigorta_Sirketleri.all(), cevaplandi=talep.cevaplandi,
+                                         olusturulma_tarihi=talep.creationDate, teklif=teklif)
+                talep_objeleri.append(obje)
 
-    for talep in teklif_talepleri:
-        sigorta = TrafikSigortasi.objects.get(id=talep.sigorta_id)
-        teklif = Teklif.objects.get(teklif_talep=talep, teklif_kabul=True)
-        obje = TalepTeklifObject(id=talep.id, acente=talep.acente, sigorta_tipi=talep.sigortaTipi, sigorta=sigorta,
-                                 sigorta_sirketleri=talep.sigorta_Sirketleri.all(), cevaplandi=talep.cevaplandi,
-                                 olusturulma_tarihi=talep.creationDate, teklif=teklif)
-        talep_objeleri.append(obje)
-
-    return render(request, 'AnaAcente/bekleyen_talepler.html', {'talepler': talep_objeleri})
+    return render(request, 'AnaAcente/trafik_talepler.html', {'talepler': talep_objeleri})
 
 
 @login_required
@@ -105,9 +108,13 @@ def trafik_police_olustur(request, pk):
     teklif = Teklif.objects.filter(pk=pk)
     sigorta = TrafikSigortasi.objects.get(id=teklif[0].teklif_talep.sigorta_id)
 
+    odeme = KrediKarti.objects.get(teklif=teklif[0])
+
     musteriForm = MusteriForm(request.POST or None, instance=sigorta.sigortali)
 
     trafikForm = TrafikForm(request.POST or None, instance=sigorta)
+
+    odeme_form = KrediKartiForm(request.POST or None, instance=odeme)
 
     policeForm = TrafikPoliceForm()
 
@@ -120,15 +127,16 @@ def trafik_police_olustur(request, pk):
             teklif_p.police_mi = True
             teklif_p.prim_tutari = (teklif_p.teklif_tutari * int(Ayar.objects.get(name="trafik_prim").value)) / 100
             teklif_p.save()
-            police = TrafikPolice(teklif=teklif_p, police_file=policeForm.cleaned_data['police_file'])
+            police = TrafikPolice(teklif=teklif_p, police_file=policeForm.cleaned_data['police_file'], police_numarasi=policeForm.cleaned_data['police_numarasi'])
             police.save()
-            messages.success(request,'Poliçe başarıyla oluşturuldu.')
+            messages.success(request, 'Poliçe başarıyla oluşturuldu.')
             return redirect("insurance:acente-policeleri")
         else:
-            messages.warning(request,'Form alanlarını kontrol ediniz')
+            messages.warning(request, 'Form alanlarını kontrol ediniz')
     return render(request, 'AnaAcente/trafik_police_olustur.html',
                   {'musteri_form': musteriForm, 'trafik_form': trafikForm,
-                   'police_form': policeForm, 'sirketler': teklif[0].sigorta_sirket, 'teklifler': teklif})
+                   'police_form': policeForm, 'sirketler': teklif[0].sigorta_sirket, 'teklifler': teklif,
+                   'kart_form': odeme_form})
 
 
 @login_required

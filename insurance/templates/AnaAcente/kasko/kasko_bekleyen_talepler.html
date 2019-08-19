@@ -169,21 +169,31 @@
                                             </button>
                                         </td>
 
+                                        {% for teklif in talep.teklif.all %}
+
+                                         {% if teklif.teklif_kabul and teklif.police_mi == False %}
+
                                         <td>
-                                            <a href="{% url "insurance:trafik-police-olustur"  talep.teklif.id %}" type="button"
+                                            <a href="{% url "insurance:kasko-police-olustur"  teklif.id %}" type="button"
                                                class="button btn btn-success">Police Oluştur</a>
                                         </td>
-                                    {% else %}
+                                            {% else %}
+                                            <td></td>
+                                            {% endif %}
+
+                                        {% endfor %}
+                                {% else %}
                                         <td>
                                             <button type="button" class="btn btn-danger" disabled>Teklif Bekleniyor
                                             </button>
                                         </td>
 
                                         <td>
-                                            <a href="{% url "insurance:trafik-olustur"  talep.id %}" type="button"
+                                            <a href="{% url "insurance:kasko-olustur"  talep.id %}" type="button"
                                                class="button btn btn-success">Teklif Yap</a>
                                         </td>
                                     {% endif %}
+
 
 
                                 </tr>

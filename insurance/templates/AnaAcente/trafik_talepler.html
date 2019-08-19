@@ -49,7 +49,7 @@
         {% endif %}
         <h1>
 
-           Acente Poliçeleri
+            Teklif Talepleri
         </h1>
 
     </section>
@@ -122,13 +122,13 @@
                             <tr>
                                 <th></th>
                                 <th>Acente</th>
+                                <th>Müşteri Adı Soyadı</th>
 
-                                <th>Poliçe Numarası</th>
-                                <th>Sigorta Tutarı</th>
-                                <th>Acente Prim Tutarı</th>
+                                <th>Sigorta Tipi</th>
+                                <th>Sigorta Şirketleri</th>
 
-                                <th>Poliçe Oluşturulma Tarihi</th>
-                                <th>Poliçe</th>
+                                <th>Talep Tarihi</th>
+                                <th>Durum</th>
                                 <th></th>
 
 
@@ -137,31 +137,62 @@
                             <tbody>
 
 
-                            {% for police in policeler %}
+                            {% for talep in talepler %}
 
 
                                 <tr>
                                     <td>{{ forloop.counter }} </td>
 
-                                    <td>{{ police.teklif.teklif_talep.acente.acente_adi }}</td>
-                                    <td>{{ police.police_numarasi }}</td>
+                                    <td>{{ talep.acente.acente_adi }}</td>
 
+                                    <td>{{ talep.sigorta.sigortali.adi }} {{ talep.sigorta.sigortali.soyadi }} </td>
 
-
-                                    <td>{{ police.teklif.teklif_tutari }} </td>
-
-                                 <td>{{ police.teklif.prim_tutari }} </td>
-
-                                <td>{{ police.creationDate }} </td>
-
-                                 <td><a href="/media/{{ police.police_file }}" target="_blank"> <i class="fa fa-file-pdf-o fa-2x " style="color: red" aria-hidden="true"></i></a></td>
+                                    <td>{{ talep.sigorta_tipi.tip }} </td>
 
                                     <td>
-                                   <a href="{% url "insurance:trafik-incele" police.teklif.teklif_talep.id %} " type="button" class="button btn btn-success">Sigorta Detay</a>
+                                        {% if talep.sigorta_sirketleri.all %}
+                                            <ul>
+                                                {% for sirket in talep.sigorta_sirketleri %}
+
+                                                    <li>{{ sirket.sirket_adi }}</li>
+
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
 
                                     </td>
 
+                                    <td>{{ talep.olusturulma_tarihi }}</td>
+                                    {% if talep.cevaplandi is True %}
+                                        <td>
+                                            <button type="button" disabled class="btn  btn-success">Teklif Yapıldı
+                                            </button>
+                                        </td>
 
+                                        {% for teklif in talep.teklif.all %}
+
+                                         {% if teklif.teklif_kabul and teklif.police_mi == False %}
+
+                                        <td>
+                                            <a href="{% url "insurance:trafik-policesi-olustur"  teklif.id %}" type="button"
+                                               class="button btn btn-success">Police Oluştur</a>
+                                        </td>
+                                            {% else %}
+                                            <td></td>
+                                            {% endif %}
+
+                                        {% endfor %}
+                                {% else %}
+                                        <td>
+                                            <button type="button" class="btn btn-danger" disabled>Teklif Bekleniyor
+                                            </button>
+                                        </td>
+
+                                        <td>
+                                            <a href="{% url "insurance:trafik-olustur"  talep.id %}" type="button"
+                                               class="button btn btn-success">Teklif Yap</a>
+                                        </td>
+                                    {% endif %}
 
 
 

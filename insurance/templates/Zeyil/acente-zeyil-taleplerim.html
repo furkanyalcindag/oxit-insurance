@@ -49,7 +49,7 @@
         {% endif %}
         <h1>
 
-           Acente Poliçeleri
+            Sigorta Şirketleri
         </h1>
 
     </section>
@@ -121,15 +121,15 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Acente</th>
-
+                                <th>Durum</th>
                                 <th>Poliçe Numarası</th>
-                                <th>Sigorta Tutarı</th>
-                                <th>Acente Prim Tutarı</th>
-
-                                <th>Poliçe Oluşturulma Tarihi</th>
-                                <th>Poliçe</th>
-                                <th></th>
+                                <th>Acente</th>
+                                <th>Sigorta Şirketi</th>
+                                <th>Branş</th>
+                                <th>Zeyil Türü</th>
+                                <th>Açıklama</th>
+                                <th>Oluşturulma Tarihi</th>
+                                <th>Durum Güncelleme Tarihi</th>
 
 
                             </tr>
@@ -137,37 +137,49 @@
                             <tbody>
 
 
-                            {% for police in policeler %}
+                            {% for zeyil in zeyil_talepler %}
 
 
                                 <tr>
                                     <td>{{ forloop.counter }} </td>
+                                    {% if zeyil.durum == 'Beklemede' %}
 
-                                    <td>{{ police.teklif.teklif_talep.acente.acente_adi }}</td>
-                                    <td>{{ police.police_numarasi }}</td>
+                                        <td><span class="label label-warning">{{ zeyil.durum }}</span></td>
+
+                                    {% endif %}
+
+                                    {% if zeyil.durum == 'Onaylandı' %}
+
+                                        <td><span class="label label-success">{{ zeyil.durum }}</span></td>
+
+                                    {% endif %}
+
+                                    {% if zeyil.durum == 'İşleme Alındı' %}
+
+                                        <td><span class="label label-primary">{{ zeyil.durum }}</span></td>
+
+                                    {% endif %}
+
+                                    {% if zeyil.durum == 'Reddedildi' %}
+
+                                        <td><span class="label label-danger">{{ zeyil.durum }}</span></td>
+
+                                    {% endif %}
 
 
 
-                                    <td>{{ police.teklif.teklif_tutari }} </td>
+                                    <td>{{ zeyil.police_numarasi }}</td>
 
-                                 <td>{{ police.teklif.prim_tutari }} </td>
-
-                                <td>{{ police.creationDate }} </td>
-
-                                 <td><a href="/media/{{ police.police_file }}" target="_blank"> <i class="fa fa-file-pdf-o fa-2x " style="color: red" aria-hidden="true"></i></a></td>
-
-                                    <td>
-                                   <a href="{% url "insurance:trafik-incele" police.teklif.teklif_talep.id %} " type="button" class="button btn btn-success">Sigorta Detay</a>
-
-                                    </td>
-
-
-
+                                    <td>{{ zeyil.acente.acente_adi }}</td>
+                                    <td>{{ zeyil.sigorta_sirketi }}</td>
+                                    <td>{{ zeyil.brans }}</td>
+                                    <td>{{ zeyil.zeyil_turu }}</td>
+                                    <td>{{ zeyil.aciklama }}</td>
+                                    <td>{{ zeyil.creationDate }}</td>
+                                    <td>{{ zeyil.modificationDate }}</td>
 
 
                                 </tr>
-
-
 
                             {% endfor %}
 

@@ -1,11 +1,11 @@
 from django.forms import ModelForm, forms
 
-from insurance.models import TrafikPolice
+from insurance.models import TrafikPolice, KaskoPolice
 
 
-class TrafikPoliceForm(ModelForm):
+class KaskoPoliceForm(ModelForm):
     police_file = forms.FileField()
 
     class Meta:
-        model = TrafikPolice
+        model = KaskoPolice
         fields = ('police_file','police_numarasi')
