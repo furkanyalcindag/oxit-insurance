@@ -81,7 +81,8 @@ def acente_ekle(request):
             form.cleaned_data['email'] = form.cleaned_data['username']
             user = form.save(commit=False)
 
-            password = User.objects.make_random_password()
+            #password = User.objects.make_random_password()
+            password = 'Sigorta2020'
             user.set_password(password)
             # form.cleaned_data['password'] = make_password(form.cleaned_data['password'])
             user = user.save()

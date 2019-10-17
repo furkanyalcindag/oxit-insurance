@@ -220,7 +220,7 @@
 
   {
     "model": "insurance.MenuAcente",
-    "pk": 18,
+    "pk": 21,
     "fields": {
       "name": "Zeyil",
       "url": "",
@@ -232,13 +232,13 @@
 
    {
     "model": "insurance.MenuAcente",
-    "pk": 19,
+    "pk": 22,
     "fields": {
       "name": "Zeyil Talepleri",
       "url": "insurance:zeyil-istekleri",
       "is_parent": false,
       "fa_icon": "fa-user-times",
-      "parent": 18
+      "parent": 21
     }
   }
 ]
