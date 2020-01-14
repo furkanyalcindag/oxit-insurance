@@ -158,8 +158,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.com.tr'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'police@sigortahavuzum.net'
-EMAIL_HOST_PASSWORD = 'sigortahavuzum2019'
+EMAIL_HOST_USER = 'sigortahavuzum@yandex.com'
+EMAIL_HOST_PASSWORD = 'oxit2016'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
