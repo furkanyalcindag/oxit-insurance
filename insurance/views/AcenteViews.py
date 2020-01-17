@@ -100,7 +100,7 @@ def acente_ekle(request):
 
 
 
-            subject, from_email, to = 'Sigortahavuzum.net Kullanıcı Giriş Bilgileri', 'police@sigortahavuzum.net', current_user.email
+            subject, from_email, to = 'Sigortahavuzum.net Kullanıcı Giriş Bilgileri', 'sigortahavuzum@yandex.com', current_user.email
             text_content = 'Aşağıda ki bilgileri kullanarak sisteme giriş yapabilirsiniz.'
             html_content = '<p> <strong>Site adresi:</strong> <a href="http://www.sigortahavuzum.net"></a>www.sigortahavuzum.net</p>'
             html_content = html_content + '<p><strong>Kullanıcı Adı:</strong>' + current_user.username + '</p>'
@@ -152,4 +152,4 @@ def acente_musterileri(request):
 
     musteriler = Musteri.objects.filter(acente=acente)
 
-    return render(request, "musteriler.html", {"musteriler": musteriler})
+    return render(request, "Acente/musteriler.html", {"musteriler": musteriler})
