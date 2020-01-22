@@ -7,7 +7,7 @@ from insurance.models import Musteri
 class MusteriForm(ModelForm):
     class Meta:
         model = Musteri
-        fields = {'adi', 'soyadi', 'telefon', 'cinsiyet', 'adres', 'meslek', 'tc', 'vergi_no', 'dogum_tarihi'}
+        fields = {'adi', 'soyadi', 'telefon', 'adres', 'meslek', 'tc', 'vergi_no', }
 
         widgets = {
 
@@ -20,13 +20,11 @@ class MusteriForm(ModelForm):
             'telefon': forms.TextInput(
                 attrs={'class': 'form-control ', 'placeholder': 'Telefon', 'value': '' }),
 
-            'cinsiyet': forms.Select(attrs={'class': 'form-control select2 select2-hidden-accessible',
-                                            'style': 'width: 100%;'}),
 
             'adres': forms.Textarea(attrs={'class': 'form-control ', 'placeholder': 'Adres'}),
 
             'meslek': forms.TextInput(
-                attrs={'class': 'form-control ', 'placeholder': 'Adres', 'value': ''}),
+                attrs={'class': 'form-control ', 'placeholder': 'Meslek', 'value': ''}),
 
             'tc': forms.TextInput(
                 attrs={'class': 'form-control ', 'placeholder': 'T.C. No', 'value': '', 'required': 'required'}),
@@ -34,8 +32,6 @@ class MusteriForm(ModelForm):
             'vergi_no': forms.TextInput(
                 attrs={'class': 'form-control ', 'placeholder': 'Vergi No:', 'value': ''}),
 
-            'dogum_tarihi': forms.DateInput(
-                attrs={'class': 'form-control  pull-right', 'id': 'datepicker','placeholder': 'Doğum Tarihi' ,'autocomplete': 'off',
-                       'onkeydown': 'return false'}),
+
 
         }

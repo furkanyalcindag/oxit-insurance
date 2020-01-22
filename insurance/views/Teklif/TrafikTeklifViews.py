@@ -49,7 +49,7 @@ def teklif_olustur_trafik(request):
                 trafik_sigorta = trafik_form.save(commit=False)
                 trafik_sigorta.sigortali = musteri
                 trafik = trafik_sigorta.save()
-            except:
+            except Exception as ex:
                 messages.warning(request, "Form alanlarını kontrol ediniz")
                 instance = Musteri.objects.get(id=musteri.id).delete()
                 return redirect("insurance:trafik-teklif-iste")

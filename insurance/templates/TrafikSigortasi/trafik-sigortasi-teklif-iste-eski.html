@@ -82,7 +82,17 @@
                                                 <!-- /.input group -->
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Doğum Tarihi</label>
+                                                <div class="input-group">
 
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    {{ musteri_form.dogum_tarihi }}
+                                                    <!-- /.input group -->
+                                                </div>
+                                            </div>
 
                                             <div class="form-group">
                                                 <label>Telefon Numarası</label>
@@ -97,7 +107,11 @@
                                         <div class="col-md-6">
 
 
+                                            <div class="form-group">
+                                                <label>Cinsiyet</label>
 
+                                                {{ musteri_form.cinsiyet }}
+                                            </div>
 
 
                                             <div class="form-group">
@@ -147,7 +161,12 @@
 
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Belge Seri No</label>
 
+                                                {{ trafik_form.belge_seri_no }}
+                                                <!-- /.input group -->
+                                            </div>
 
 
                                             <div class="form-group">
@@ -182,7 +201,12 @@
                                                 <!-- /.input group -->
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>IMM No</label>
 
+                                                {{ trafik_form.imm }}
+                                                <!-- /.input group -->
+                                            </div>
 
                                             <div class="form-group">
                                                 <label>Motor Numarası</label>
@@ -191,7 +215,12 @@
                                                 <!-- /.input group -->
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Belge Seri No</label>
 
+                                                {{ trafik_form.belge_seri_no }}
+                                                <!-- /.input group -->
+                                            </div>
 
                                             <div class="form-group">
                                                 <label>Kullanım Tarzı</label>
@@ -205,7 +234,12 @@
                                         <div class="col-md-4" style="border-left: 1px solid black;">
 
 
+                                            <div class="form-group">
+                                                <label>Araç Bedeli (₺)</label>
 
+                                                {{ trafik_form.arac_bedeli }}
+                                                <!-- /.input group -->
+                                            </div>
                                             <!-- /.form-group -->
                                             <div class="form-group">
                                                 <label>Koltuk Sayısı</label>
@@ -225,9 +259,25 @@
                                                     <!-- /.input group -->
                                                 </div>
                                             </div>
+                                            <div class="form-group">
 
 
+                                                <label>Araç Faturalı</label>
+                                               {{ trafik_form.arac_faturali }}
+                                            </div>
 
+                                             <div class="form-group">
+                                                <label>Fatura Tarihi</label>
+                                                <div class="input-group">
+
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+
+                                                    {{ trafik_form.fatura_tarihi }}
+                                                    <!-- /.input group -->
+                                                </div>
+                                            </div>
 
 
                                         </div>
