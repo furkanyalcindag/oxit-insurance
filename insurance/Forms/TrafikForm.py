@@ -9,7 +9,7 @@ class TrafikForm(ModelForm):
         model = TrafikSigortasi
         fields = ('arac_plaka', 'kullanim_tarzi', 'arac_marka', 'arac_tipi', 'model_yili',
 
-                  'motor_numarasi', 'sasi_numarasi', 'koltuk_sayisi', 'tescil_tarihi')
+                  'motor_numarasi', 'sasi_numarasi', 'koltuk_sayisi', 'tescil_tarihi','belge_seri_no')
 
         widgets = {
             'arac_plaka': forms.TextInput(

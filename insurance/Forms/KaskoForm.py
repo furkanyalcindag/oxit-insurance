@@ -8,7 +8,7 @@ class KaskoForm(ModelForm):
     class Meta:
         model = KaskoSigortasi
         fields = ('arac_plaka', 'kullanim_tarzi', 'arac_marka', 'arac_tipi', 'model_yili',
-                  'arac_bedeli',
+                  'arac_bedeli', 'belge_seri_no',
                   'motor_numarasi', 'sasi_numarasi', 'koltuk_sayisi', 'tescil_tarihi', 'aksesuar_bedeli',
                   'kasa_bedeli_kasa_tipi', 'lpg_bedeli', 'tasinan_emtea_ve_cinsi', 'aciklama')
 
