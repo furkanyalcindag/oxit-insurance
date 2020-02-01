@@ -18,6 +18,7 @@ class KaskoForm(ModelForm):
 
             'kullanim_tarzi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Kullanım Tarzı'}),
             'arac_marka': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Araç Markası'}),
+            'belge_seri_no': forms.TextInput(attrs={'class': 'form-control ', 'placeholder': 'Belge Seri No'}),
 
             'arac_tipi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Araç Tipi'}),
             'model_yili': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Model Yılı'}),

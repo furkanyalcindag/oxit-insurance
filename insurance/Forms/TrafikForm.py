@@ -14,7 +14,7 @@ class TrafikForm(ModelForm):
         widgets = {
             'arac_plaka': forms.TextInput(
                 attrs={'class': 'form-control ', 'placeholder': 'Araç Plakası', 'required': 'required'}),
-
+            'belge_seri_no': forms.TextInput(attrs={'class': 'form-control ', 'placeholder': 'Belge Seri No'}),
             'kullanim_tarzi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Kullanım Tarzı'}),
             'arac_marka': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Araç Markası'}),
             'arac_tipi': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Araç Tipi'}),
